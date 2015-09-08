@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="fr">
+ <head>
+  <title>Exercice&nbsp;: Ordonnancement [Traitement de texte _ Premiers pas]</title>
+  <meta charset="UTF-8">
+  <meta name="author" content="E. Jallier CEFIM ">
+  <meta name="keywords" content>
+  <meta name="date" content="08/09/2015">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" type="text/css" href="../wdgt/scCodeMgr/scCodeMgr.css">
+  <link rel="stylesheet" type="text/css" href="../wdgt/scImgMgr/scImgMgr.css">
+  <script type="text/JavaScript">
+/*0*/ var scServices = {};
+/*1*/ scServices["scLoad"] = {loadFromRoot:function(pUrl){window.location.href="../"+pUrl;}, getPathFromRoot:function(pPath){return "../"+pPath;}, getUrlFromRoot:function(pHref){if(!this.fRootOffset) this.fRootOffset = scCoLib.hrefBase().length-30; return pHref.substring(this.fRootOffset);},getRootUrl:function(){if(!this.fRootUrl) this.fRootUrl = scCoLib.hrefBase().substring(0,scCoLib.hrefBase().length-31); return this.fRootUrl;}};
+</script>
+  <script type="text/JavaScript" src="../lib-sm/scCoLib.js"></script>
+  <script type="text/JavaScript" src="../lib-sm/scPaLib.js"></script>
+  <script type="text/JavaScript" src="../lib-sm/scSiLib.js"></script>
+  <script type="text/JavaScript" src="../lib-sm/scTiLib.js"></script>
+  <script type="text/JavaScript" src="../lib-sm/scDynUiMgr.js"></script>
+  <script type="text/JavaScript" src="../lib-sm/scDragMgr.js"></script>
+  <script type="text/JavaScript" src="../lib-sm/scTooltipMgr.js"></script>
+  <script type="text/JavaScript" src="../lib-sm/scMapMgr.js"></script>
+  <script type="text/JavaScript" src="../svc/assmnt.js"></script>
+  <script type="text/JavaScript" src="../lib-sma/scAssmntMgr.js"></script>
+  <script type="text/JavaScript" src="../wdgt/mathjax/mathjaxMgr.js"></script>
+  <script type="text/JavaScript" src="../svc/scSearch/scSearch.js"></script>
+  <script type="text/JavaScript" src="../wdgt/tplMgr/tplMgr.js"></script>
+  <script type="text/JavaScript" src="../wdgt/scCodeMgr/scCodeMgr.js"></script>
+  <script type="text/JavaScript" src="../wdgt/searchMgr/searchMgr.js"></script>
+  <script type="text/JavaScript" src="../wdgt/outMgr/outMgr.js"></script>
+  <script type="text/JavaScript" src="../wdgt/scImgMgr/scImgMgr.js"></script>
+  <script type="text/JavaScript" src="../wdgt/scMediaMgr/scMediaMgr.js"></script>
+  <script type="text/JavaScript">
+/*0*/ try{var vCurrDir = scCoLib.hrefBase().substring(0,scCoLib.hrefBase().lastIndexOf("/")+1); if(window.opener && window.opener.location.href.lastIndexOf(vCurrDir, vCurrDir.length)==0 && window.opener.scServices) scServices = window.opener.scServices; else if(window.parent && window.parent.location.href.lastIndexOf(vCurrDir, vCurrDir.length)==0 && window.parent.scServices) scServices = window.parent.scServices;}catch(e){}
+scCodeMgr.registerCode("des:div.code");
+
+scImgMgr.registerAdaptedImage("ide:content/des:img");
+
+scImgMgr.registerGallery("des:div.galFra");
+
+scImgMgr.registerZoom("des:a.imgZoom",{toolbar:1,mag:1,titlePath:"par:/nsi:/des:span.capTi"});
+
+</script>
+  <meta name="generator" content="SCENARI 4.1.10 / OpaleGenAurora 3.5.014 - http://scenari-platform.org/opale">
+  <meta name="revision" content="2015-09-08 14:30">
+  <link rel="start" href="Docs_DocumentsCourts.html" title="Traitement de texte _ Premiers pas">
+  <link type="text/css" rel="stylesheet" href="../skin/css/main.css" media="all">
+  <link type="text/css" rel="stylesheet" href="../skin/css/skin.css" media="all">
+  <link type="text/css" rel="stylesheet" href="../skin/css/print.css" media="print">
+  <script type="text/JavaScript">
+outMgr.declareOutline("Docs_DocumentsCourts.txt");
+	</script> </head>
+ <body class=" default module quiz ordWord">
+  <div id="root"><header id="header" role="banner"><h1><span>Traitement de texte _ Premiers pas</span></h1><nav role="navigation"><ul id="accessibility"><li class="waiContent"><a href="#content"><span>contenu</span></a></li><li class="waiMenu"><a href="#menu"><span>menu</span></a></li><li class="waiNav"><a href="#navigation"><span>navigation</span></a></li><li class="waiTools"><a href="#tools"><span>outils</span></a></li><li class="waiFoot"><a href="#footer"><span>pied de page</span></a></li></ul></nav></header><main id="main" role="main"><div id="document"><div id="content" tabindex="-1"><div class="scroller"><hr class="hidden"><section class="hBk article quiz ordWord"><h2 class="hBk_ti"><span>Exercice&nbsp;: Ordonnancement</span></h2><div class="hBk_co"><script type="text/JavaScript">
+var KVVkROXpEVd5dGJB0yRoL = {
+
+	fId : "KVVkROXpEVd5dGJB0yRoL",
+	fCurSeq : null,
+	initSeq : function(pCodeSeq){
+	try {
+		if(pCodeSeq==null) return;
+		if(this.fCurSeq!=null) this.closeSeq();
+		this.fCurSeq = pCodeSeq;
+		switch(this.fCurSeq) {
+case "play" : {
+
+	this.refreshResult = function(pDisplay){
+		if(pDisplay) this.fResultDisplay = pDisplay;
+		if(this.fResultDisplay == "none") for(var i=this.fLabels.length -1; i >=0; i--)  scDragMgr.helpers.delClass(this.fLabels[i],"ddLabel_Right","ddLabel_Wrong");
+		else for(var i=this.fLabels.length -1; i >=0; i--) {
+			var vLabel = this.fLabels[i];
+
+			var vOldClass = (vLabel.sO == vLabel.rO && vLabel.sG == vLabel.rG) ? "ddLabel_Wrong" : "ddLabel_Right";
+			var vNewClass = (vLabel.sO == vLabel.rO && vLabel.sG == vLabel.rG) ? "ddLabel_Right" : "ddLabel_Wrong";
+
+			scDragMgr.helpers.switchClass(vLabel, vOldClass, vNewClass);
+		}
+	};
+var vLoadRespSession = "";
+
+		for(var i = this.fLabels.length - 1; i >=0; i--) scDragMgr.setDraggable(this.fLabels[i], true);
+		this.load(vLoadRespSession);
+		this.synch();
+	this.fResultDisplay = "none";
+
+var vLoadScoreSession = "";
+		this.fMinPts = scServices.assmntMgr.getMinPts(this.fId, vLoadScoreSession);
+		this.fScorePts = scServices.assmntMgr.getScorePts(this.fId, vLoadScoreSession);
+		this.fMaxPts = scServices.assmntMgr.getMaxPts(this.fId, vLoadScoreSession);
+scAssmntMgr.setMode(sc$("KVVkROXpEVd5dGJB0yRoL_N_globalExp"), "collapsed");
+scAssmntMgr.setMode(sc$("KVVkROXpEVd5dGJB0yRoL_N_score"), "invisible");
+scAssmntMgr.setToggleStatus(sc$("KVVkROXpEVd5dGJB0yRoL_S_N79"), false);
+this.fRespSession = "";
+		if(scServices.assmntMgr.getCompletionStatus(this.fId, this.fRespSession)=="notAttempt") scServices.assmntMgr.setCompletionStatus(this.fId, this.fRespSession, "attempt");
+
+		this.computeScore = function() {
+
+		function scoreOrder(pLabels, pGroup) {
+			var vMax=0, vErr=0;
+			var vD = pLabels.length-1;
+			for(var i=vD; i >=0; i--) {
+				if(pGroup && pGroup!=pLabels[i].rG) return 0;
+				vErr += Math.abs(pLabels[i].sO - pLabels[i].rO);
+				vMax += Math.abs(vD);
+				vD = vD - 2;
+			}
+			return vMax>0 ? (vMax - vErr) / vMax : 0;
+		}
+
+		this.fMinPts = 0;
+		this.fMaxPts = this.fLabels.length;
+		this.fScorePts = Math.floor(scoreOrder(this.fLabels, this.fGroupsC.length-1) * this.fLabels.length);
+
+		//alert("score:::::"+this.fMinPts+" - "+this.fScorePts+" - "+this.fMaxPts);
+var vScoreSession = "";
+		if(this.fScorePts != null) scServices.assmntMgr.setPts(this.fId, vScoreSession, this.fMinPts, this.fScorePts, this.fMaxPts);
+
+		this.refreshScoresFeedbacks();
+		this.refreshResult();
+	}
+
+if(this.fRespSession != vLoadRespSession) this.saveResp(this.fRespSession);
+
+		this.computeScore();
+
+		scServices.assmntMgr.commit();
+		break;
+	}
+
+		}
+	}catch(e){alert("failed:::"+e)};
+	},
+	onActionN99 : function(pButton){
+		if(scAssmntMgr.isDisabled(pButton)) return;
+var vSess="";
+scServices.assmntMgr.resetResponses(this.fId, vSess);
+scServices.assmntMgr.setPts(this.fId, vSess, null, null, null); 
+this.initSeq("play");
+
+		scServices.assmntMgr.commit();
+	},
+	onActionN79 : function(pButton){
+		if(scAssmntMgr.isDisabled(pButton)) return;
+		var vIsOn = scAssmntMgr.isToggleOn(pButton);
+		if(vIsOn) {
+scAssmntMgr.setMode(sc$("KVVkROXpEVd5dGJB0yRoL_N_score"), "invisible");
+this.refreshResult("none");scAssmntMgr.setMode(sc$("KVVkROXpEVd5dGJB0yRoL_N_globalExp"), "collapsed");
+
+		} else {
+scAssmntMgr.setMode(sc$("KVVkROXpEVd5dGJB0yRoL_N_score"), "visible");
+this.refreshResult("addClass");scAssmntMgr.setMode(sc$("KVVkROXpEVd5dGJB0yRoL_N_globalExp"), "visible");
+
+		}
+		scAssmntMgr.setToggleStatus(pButton, ! vIsOn);
+		scServices.assmntMgr.commit();
+	},
+
+	closeSeq: function(){
+		var vForm = document.forms.KVVkROXpEVd5dGJB0yRoL_form;
+		switch(this.fCurSeq) {
+case "play" : {
+		this.refreshResult("none");
+
+		break;
+	}
+
+		}
+		this.fCurSeq = null;
+	},
+	getOnLoadSeq:function() {
+
+			return "play";
+
+	return null;
+	},
+
+	saveResp:function(pSession){
+		if(pSession==null) return;
+		var vLabel = this.fLabels[0];
+		var vStr = "[{g:" + vLabel.rG + ",offs:" + vLabel.rO + "," + scDragMgr.saveLabelPos(vLabel) + "}";
+		for(var i=1, len=this.fLabels.length; i < len; i++) {
+			vLabel = this.fLabels[i];
+			vStr += ",{g:" + vLabel.rG + ",offs:" + vLabel.rO + "," + scDragMgr.saveLabelPos(vLabel) + "}";
+		}
+		vStr+="]";
+		scServices.assmntMgr.setResponse(this.fId, pSession, "pos", vStr);
+	},
+	load:function(pSession){
+		var vStr = (pSession!=null) ? scServices.assmntMgr.getResponse(this.fId, pSession, "pos") : null;
+		for(var i=this.fGroupsC.length -1; i >=0; i--) {
+			var vGroup = this.fGroupsC[i];
+			for(var j=vGroup.length-1; j >=0; j--) vGroup[j].labelsToAdd = [];
+		}
+		if(vStr) {
+						var vList = eval(vStr);
+			for(var i=0, len=this.fLabels.length; i < len; i++) {
+				var vLabelToAdd = vList[i];
+				vLabelToAdd.label = this.fLabels[i];
+				var vGroupC = this.fGroupsC[vLabelToAdd.g];
+				if(vGroupC.length == 1) vGroupC[0].labelsToAdd[vLabelToAdd.offs] = vLabelToAdd; 
+				else vGroupC[vLabelToAdd.offs].labelsToAdd.push(vLabelToAdd);
+			}
+		} else {
+						var vBasketC = this.fGroupsC[0];
+			for(var i=vBasketC.length-1; i >=0; i--) for(var j=0, vLen=vBasketC[i]._Labels.length; j < vLen; j++) vBasketC[i].labelsToAdd.push({label:vBasketC[i]._Labels[j]});
+		}
+		scDragMgr.repopulateContainers("KVVkROXpEVd5dGJB0yRoL");
+	},
+	synch:function(){
+		for(var i=this.fGroupsC.length -1; i >=0; i--) {
+			var vGroup = this.fGroupsC[i];
+			var vOffset = 0;
+			for(var j=0, vLenJ=vGroup.length; j < vLenJ; j++) {
+				var vItems = scDragMgr.getLabels(vGroup[j]);
+				var vLenK = vItems.length;
+								if(vLenK == 0) vOffset++;
+				else for(var k=0; k < vLenK; k++) {
+					vItems[k].rG = i;
+					vItems[k].rO = vOffset++;
+				}
+			}
+		}
+	},
+	refreshScoresFeedbacks : function(){
+
+		var vScoreNode = sc$("KVVkROXpEVd5dGJB0yRoL_SNb8");
+
+		var vScore = (Math.round((this.fScorePts-this.fMinPts) / (this.fMaxPts-this.fMinPts) * 100) * 1)+ 0;
+if(vScore > 99 && true) {
+			vScoreNode.innerHTML = "<span>"  + "Bonne réponse<\/span>";
+			vScoreNode.className = "answBest";
+		} else if(vScore > 49 && vScore <= 99 && true) {
+			vScoreNode.innerHTML = "<span>" + vScore + "% de bonnes réponses<\/span>";
+			vScoreNode.className = "answGood";
+		} else if(vScore > 0 && vScore <= 49 && true) {
+			vScoreNode.innerHTML = "<span>" + vScore + "% de bonnes réponses<\/span>";
+			vScoreNode.className = "answBad";
+		} else if(vScore <= 0 && true) {
+			vScoreNode.innerHTML = "<span>"  + "Mauvaise réponse <\/span>";
+			vScoreNode.className = "answWorst";
+		} else  {
+			vScoreNode.innerHTML = "";
+			vScoreNode.className = "";
+		}
+
+	},
+	onLoad: function(){
+	try{
+		var onChange = function() {
+KVVkROXpEVd5dGJB0yRoL.synch();
+KVVkROXpEVd5dGJB0yRoL.computeScore();
+KVVkROXpEVd5dGJB0yRoL.saveResp(KVVkROXpEVd5dGJB0yRoL.fRespSession);
+			scServices.assmntMgr.commit();
+		}
+		this.fLabels = [];
+		var vLabel, vC;
+scDragMgr.makeContainer("KVVkROXpEVd5dGJB0yRoL", sc$("KVVkROXpEVd5dGJB0yRoL_S_N48"), vC = sc$("KVVkROXpEVd5dGJB0yRoL_S_N4a"), sc$("KVVkROXpEVd5dGJB0yRoL_S_N55")).setMode(vC, 'append', -1).setDragOverClass(vC, 'ddBasketDragOver');
+vLabel = sc$("KVVkROXpEVd5dGJB0yRoL_LN15a");
+	this.fLabels.push(vLabel);
+	vLabel.sO=0;
+vLabel.sG=1;
+scDragMgr.makeDraggableLabel("KVVkROXpEVd5dGJB0yRoL", vLabel).setCallback(vLabel, onChange).setDragClass(vLabel, 'ddLabelDrag');
+vLabel = sc$("KVVkROXpEVd5dGJB0yRoL_LN163");
+	this.fLabels.push(vLabel);
+	vLabel.sO=1;
+vLabel.sG=1;
+scDragMgr.makeDraggableLabel("KVVkROXpEVd5dGJB0yRoL", vLabel).setCallback(vLabel, onChange).setDragClass(vLabel, 'ddLabelDrag');
+vLabel = sc$("KVVkROXpEVd5dGJB0yRoL_LN16c");
+	this.fLabels.push(vLabel);
+	vLabel.sO=2;
+vLabel.sG=1;
+scDragMgr.makeDraggableLabel("KVVkROXpEVd5dGJB0yRoL", vLabel).setCallback(vLabel, onChange).setDragClass(vLabel, 'ddLabelDrag');
+scDragMgr.makeContainer("KVVkROXpEVd5dGJB0yRoL", sc$("KVVkROXpEVd5dGJB0yRoL_S_N61"), vC = sc$("KVVkROXpEVd5dGJB0yRoL_S_N63"), sc$("KVVkROXpEVd5dGJB0yRoL_S_N65")).setMode(vC, 'ordered', -1).setDragOverClass(vC, 'ddCatchDragOver');
+this.fGroupsC = [scDragMgr.getContainers("KVVkROXpEVd5dGJB0yRoL", sc$("KVVkROXpEVd5dGJB0yRoL_L")), scDragMgr.getContainers("KVVkROXpEVd5dGJB0yRoL", sc$("KVVkROXpEVd5dGJB0yRoL_R"))];
+		for(var i = this.fGroupsC[0].length-1; i >=0; i--) this.fGroupsC[0][i]._Labels = scDragMgr.getLabels(this.fGroupsC[0][i]);
+		this.initSeq(this.getOnLoadSeq()); 
+		var vNodeRoot = sc$("KVVkROXpEVd5dGJB0yRoL_A");
+		vNodeRoot.style.display = "block"; 
+	}catch(e){console.log(e);}
+	},
+	onUnload: function(){
+		this.closeSeq();
+	},
+	loadSortKey: "A",
+	unloadSortKey: "A"
+};
+
+scOnLoads[scOnLoads.length] = KVVkROXpEVd5dGJB0yRoL;
+scOnUnloads[scOnUnloads.length] = KVVkROXpEVd5dGJB0yRoL;
+</script><div id="KVVkROXpEVd5dGJB0yRoL_A" style="display:none;"><div class="quizBody"><div class="question"><div class="rBk "><p>Mettez ces 3 actions dans l'ordre chronologique&nbsp;:</p></div></div><div class="response" aria-live="polite"><div id="KVVkROXpEVd5dGJB0yRoL_L" class="ddBasket "><div id="KVVkROXpEVd5dGJB0yRoL_S_N48" class="ddBasketCatch "><div id="KVVkROXpEVd5dGJB0yRoL_S_N4a" class="ddBasketCont "><div id="KVVkROXpEVd5dGJB0yRoL_LN163" class="ddLabel "><p>Frappe du texte</p></div><div id="KVVkROXpEVd5dGJB0yRoL_LN16c" class="ddLabel "><p>Mise en forme des caract&egrave;res et des paragraphes</p></div><div id="KVVkROXpEVd5dGJB0yRoL_LN15a" class="ddLabel "><p>Cr&eacute;ation du document</p></div></div><div id="KVVkROXpEVd5dGJB0yRoL_S_N55" class="ddBasketIfEmpty "><span>Plus d'&eacute;l&eacute;ments &agrave; ordonner</span></div><div class="ddBasketEnd"></div></div></div><div id="KVVkROXpEVd5dGJB0yRoL_R" class="ddRepArea "><div id="KVVkROXpEVd5dGJB0yRoL_S_N61" class="ddDropCatch "><div id="KVVkROXpEVd5dGJB0yRoL_S_N63" class="ddDropCont "></div><div id="KVVkROXpEVd5dGJB0yRoL_S_N65" class="ddDropContIfEmpty "><span>D&eacute;posez ici</span></div><div class="ddCatchDragEnd"></div></div></div></div><div class="toolbar"><a role="button" title="Afficher le score et la correction" href="#" onkeydown="scDynUiMgr.handleBtnKeyDwn(event);" onkeyup="scDynUiMgr.handleBtnKeyUp(event);" onclick="KVVkROXpEVd5dGJB0yRoL.onActionN79(this); return false;" class="btnQuiz correction " id="KVVkROXpEVd5dGJB0yRoL_S_N79"><span>Correction</span></a><a role="button" title="Effacer les r&eacute;ponses" href="#" onkeydown="scDynUiMgr.handleBtnKeyDwn(event);" onkeyup="scDynUiMgr.handleBtnKeyUp(event);" onclick="KVVkROXpEVd5dGJB0yRoL.onActionN99(this); return false;" class="btnQuiz reset "><span>Recommencer</span></a><span class="scoreBox"><span class="score " aria-live="polite" id="KVVkROXpEVd5dGJB0yRoL_N_score"><span id="KVVkROXpEVd5dGJB0yRoL_SNb8"><span></span></span></span></span></div></div></div></div></section></div></div><div id="navigation" tabindex="-1"><hr class="hidden"><nav class="pageTurner" role="navigation"><ul><li><a href="qcmImage.html" target="_self" class="btnNav prev" title="Pr&eacute;c&eacute;dent (Exercice&nbsp;: QCM Graphique)"><span>Pr&eacute;c&eacute;dent</span></a></li><li><a href="Docs_DocumentsCourts_9.html" target="_self" class="btnNav next" title="Suivant (Exercice&nbsp;: Texte &agrave; trous)"><span>Suivant</span></a></li></ul></nav></div></div><div id="toolbox"><nav id="menu" class="pageSelector" role="navigation" tabindex="-1" aria-label="menu principal"><hr class="hidden"><ul class="mnu static"><li class="sel_no anc_no type_l  dpt_0 obj"><div class="lbl type_l" id="Docs_DocumentsCourts_1.html"><a href="Docs_DocumentsCourts_1.html" target="_self" class="item"><span>Objectifs</span></a></div></li><li class="sel_no anc_no type_l  dpt_0 intro"><div class="lbl type_l" id="Docs_DocumentsCourts_2.html"><a href="Docs_DocumentsCourts_2.html" target="_self" class="item"><span>Introduction</span></a></div></li><li class="sel_no anc_no type_l  dpt_0 expUc"><div class="lbl type_l" id="googleDocs_DocumentationAide.html"><a href="googleDocs_DocumentationAide.html" target="_self" class="item"><span>Documentation et aide</span></a></div></li><li class="sel_no anc_no type_b  type_b_c dpt_0 courseUa"><div class="lbl type_b" id="Docs_DocumentsCourts_3.html"><a href="Docs_DocumentsCourts_3.html" target="_self" class="item"><span>Cr&eacute;er un document</span></a></div></li><li class="sel_no anc_no type_b  type_b_c dpt_0 courseUa"><div class="lbl type_b" id="Docs_DocumentsCourts_5.html"><a href="Docs_DocumentsCourts_5.html" target="_self" class="item"><span>Mettre en forme un Document</span></a></div></li><li class="sel_no anc_yes type_b  dpt_0 ueDiv"><div class="lbl type_b" id="Docs_DocumentsCourts_7.html"><a href="Docs_DocumentsCourts_7.html" target="_self" class="item" type="up"><span>&Eacute;valuation finale</span></a></div><ul class="sub mnu_open"><li class="sel_no anc_no type_l  dpt_1 coQuiz"><div class="lbl type_l" id="quizList.html"><a href="quizList.html" target="_self" class="item"><span>QCU et QCM</span></a></div></li><li class="sel_no anc_no type_l  dpt_1 quiz mcgSur"><div class="lbl type_l" id="qcuImage.html"><a href="qcuImage.html" target="_self" class="item"><span>Exercice&nbsp;: QCU Graphique</span></a></div></li><li class="sel_no anc_no type_l  dpt_1 quiz mcgMur"><div class="lbl type_l" id="qcmImage.html"><a href="qcmImage.html" target="_self" class="item"><span>Exercice&nbsp;: QCM Graphique</span></a></div></li><li class="sel_yes anc_no type_l  dpt_1 quiz ordWord"><div class="lbl type_l" id="Docs_DocumentsCourts_8.html"><span class="item"><span>Exercice&nbsp;: Ordonnancement</span></span></div></li><li class="sel_no anc_no type_l  dpt_1 quiz cloze"><div class="lbl type_l" id="Docs_DocumentsCourts_9.html"><a href="Docs_DocumentsCourts_9.html" target="_self" class="item"><span>Exercice&nbsp;: Texte &agrave; trous</span></a></div></li><li class="sel_no anc_no type_l  dpt_1 quiz field"><div class="lbl type_l" id="Docs_DocumentsCourts_10.html"><a href="Docs_DocumentsCourts_10.html" target="_self" class="item"><span>Exercice</span></a></div></li></ul></li></ul></nav><div id="tools" tabindex="-1"><hr class="hidden"><nav class="headingSelector" role="navigation"><ul class="mnu"><li class="anc_no home" data-position="uncle"><div class="lbl"><a href="Docs_DocumentsCourts.html" target="_self" class="item" type="index" title="Page d'accueil du module"><span>Accueil</span></a></div></li><li class="anc_yes module" data-position="ancestor"><div class="lbl"><span class="item"><span>Module</span></span></div></li></ul></nav></div></div></main><footer id="footer" role="contentinfo" tabindex="-1"><hr class="hidden"><a id="linkSp" target="_blank" href="http://scenari-platform.org" title="R&eacute;alis&eacute; avec Scenari (nouvelle fen&ecirc;tre)"><span><img alt="R&eacute;alis&eacute; avec Scenari (nouvelle fen&ecirc;tre)" src="../skin/img/tpl/scBtn.png"></span></a></footer></div>
+  <script type="text/JavaScript" src="../skin/js/skin.js"></script>
+  <script type="text/javascript">tplMgr.init();outMgr.init();scCodeMgr.init();scImgMgr.init();scMediaMgr.init("des:.mediaPlayer");</script>
+ </body>
+</html>
